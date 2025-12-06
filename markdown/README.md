@@ -1,115 +1,86 @@
-# RTL代码生成器
+# TRAE_RTL - Protocol Arbiter RTL 项目
 
-基于Excel表格自动生成RTL代码的工具，支持用户自定义代码保护。
+基于 Excel 配置自动生成、验证与管理的 DDR 协议仲裁器 RTL 代码仓库。
 
-## 🚀 快速开始
-
-### 运行主脚本
-
-```bash
-python3 run_rtl_generator_main.py
-```
-
-这个主脚本会：
-- 🔍 自动查找最新的 `Protocol_Arbiter*.xlsx` 文件
-- 📝 基于表格内容生成RTL代码
-- 🛡️ 保护现有的用户自定义代码块
-- ✅ 进行代码风格检查和语法验证
-- 📁 将生成的文件保存到 `./rtl/` 目录
-
-## 📋 功能特性
-
-### 🛡️ 用户自定义代码保护
-
-系统会自动保护以下标记之间的用户自定义代码：
-
-```verilog
-//;// User Define Begin
-// 您的自定义代码
-//;// User Define End
-```
-
-或者：
-
-```verilog
-//==============================================================================
-// User Define Begin
-// 您的自定义代码
-// User Define End  
-//==============================================================================
-```
-
-### ✅ 自动检查
-
-- **代码风格检查**: 自动修正常见的编码风格问题
-- **语法检查**: 使用iverilog进行语法验证
-- **警告处理**: 智能区分警告和错误，不会因为位宽警告而中断流程
-
-## 📁 文件结构
+## 📁 目录结构
 
 ```
 TRAE_RTL/
-├── run_rtl_generator_main.py     # 主运行脚本
-├── generate_rtl_from_excel.py     # RTL生成器核心代码
-├── Protocol_Arbiter*.xlsx         # Excel配置文件
-├── rtl/                          # 生成的RTL文件目录
-│   ├── protocol_arbiter.v
-│   ├── command_arbiter.v
-│   ├── function_arbiter.v
-│   ├── bp_if.v
-│   └── pre_all.v
-└── README.md                     # 本文件
+├── rtl/                    # 最新版 RTL 源码（SystemVerilog）
+├── scripts/                # Python 自动化脚本
+├── markdown/               # 项目文档与报告
+├── xlsx/                   # Excel 配置表（Protocol Arbiter 系列）
+├── Room/                   # 历史备份版本（rtl_0930、rtl_backup 等）
+├── .gitignore             # 仿真波形、日志、构建产物忽略规则
+└── .spec-workflow/        # 迁移与规格文档
 ```
 
-## 🔧 使用说明
+## 🚀 核心功能
 
-### 1. 准备Excel文件
+1. **Excel → RTL 自动生成**  
+   读取 `xlsx/Protocol_Arbiter*.xlsx` 配置，自动生成对应 RTL（`rtl/*.sv`）。
 
-确保当前目录包含 `Protocol_Arbiter*.xlsx` 文件，系统会自动选择最新的文件。
+2. **端口一致性验证**  
+   脚本自动比对 Excel 与 RTL 端口定义，输出差异报告到 `markdown/`。
 
-### 2. 运行生成器
+3. **QoS 优先级仲裁逻辑**  
+   支持可配置的优先级策略，已回退至统一非区分方案（详见提交历史）。
+
+4. **回归验证流水线**  
+   `scripts/verify_rtl.sh` + `scripts/check_excel.py` 一键完成语法、端口、数据一致性检查。
+
+## 🛠️ 快速开始
 
 ```bash
-python3 run_rtl_generator_main.py
+# 1. 安装 Python 依赖（如需要）
+pip install -r requirements.txt
+
+# 2. 生成最新 RTL
+python scripts/generate_rtl_from_excel.py
+
+# 3. 运行完整验证
+bash scripts/verify_rtl.sh
 ```
 
-### 3. 查看结果
+## 📊 关键脚本
 
-生成的RTL文件将保存在 `./rtl/` 目录中。
+| 脚本 | 作用 |
+|------|------|
+| `generate_rtl_from_excel.py` | Excel → RTL 自动生成 |
+| `check_excel.py` | Excel 数据合法性检查 |
+| `compare_rtl_excel_ports.py` | 端口一致性比对 |
+| `run_complete_rtl_flow.py` | 一键完整流程 |
 
-## ⚠️ 注意事项
+## 📋 文档索引
 
-1. **用户自定义代码**: 请将您的自定义逻辑放在指定的标记块内，以确保在重新生成时不会丢失。
+- 迁移与规格文档：`markdown/RTL_Generation_Summary.md`  
+- 端口对应关系：`markdown/detailed_port_correspondence_report.md`  
+- 语法错误记录：`markdown/rtl_syntax_error_report.md`  
+- QoS 修改记录：`markdown/qos_priority_modification_report.md`
 
-2. **位宽警告**: 系统可能会显示一些位宽不匹配的警告，这些通常不影响功能，系统会自动进行位宽填充。
+## 🔄 版本管理
 
-3. **备份**: 建议在大幅修改前备份您的用户自定义代码。
+- **main 分支**：稳定可综合版本（当前）
+- **feature/**：新功能开发（如 CI、LFS）  
+- 历史备份：`Room/rtl_0930/`、`Room/rtl_backup/` 等保留完整历史。
 
-## 🐛 故障排除
+## 📦 Git LFS（可选）
 
-### Excel文件未找到
+大文件（*.vcd、*.fsdb、*.xlsx）已配置 LFS 跟踪，克隆时自动拉取：
+
+```bash
+git lfs install
+git clone git@github.com:GinoZMYS/trae-rtl.git
 ```
-❌ 错误: 未找到 Protocol_Arbiter*.xlsx 文件
-💡 请确保当前目录包含 Protocol_Arbiter*.xlsx 文件
-```
 
-**解决方案**: 确保Excel文件在当前目录且文件名以 `Protocol_Arbiter` 开头。
+## 🤝 贡献流程
 
-### 语法检查失败
-```
-❌ 语法检查: 失败
-```
+1. Fork & 创建 feature 分支  
+2. 提交前运行 `bash scripts/verify_rtl.sh` 确保无回归  
+3. 提交 Pull Request，CI 通过后由维护者合并
 
-**解决方案**: 检查生成的RTL代码是否有语法错误，特别是用户自定义代码块。
+## 📄 许可证
 
-## 📞 支持
+MIT License - 详见 LICENSE 文件（如有）
 
-如果遇到问题，请检查：
-1. Excel文件格式是否正确
-2. 用户自定义代码语法是否正确
-3. 是否有足够的文件权限
-
----
-
-**版本**: 2024.12
-**更新**: 支持新的用户自定义代码标记格式和智能语法检查
+> 自动生成于 TRAE IDE，基于 Excel 配置驱动，持续迭代中 🚧
