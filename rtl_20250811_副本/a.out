@@ -1,0 +1,616 @@
+#! /usr/local/Cellar/icarus-verilog/12.0/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/local/Cellar/icarus-verilog/12.0/lib/ivl/system.vpi";
+:vpi_module "/usr/local/Cellar/icarus-verilog/12.0/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/local/Cellar/icarus-verilog/12.0/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/local/Cellar/icarus-verilog/12.0/lib/ivl/v2005_math.vpi";
+:vpi_module "/usr/local/Cellar/icarus-verilog/12.0/lib/ivl/va_math.vpi";
+:vpi_module "/usr/local/Cellar/icarus-verilog/12.0/lib/ivl/v2009.vpi";
+S_0x7f7cc47110e0 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_0x7f7cc4711270 .scope module, "protocol_arbiter" "protocol_arbiter" 3 7;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "pre_gnt_be";
+    .port_info 1 /OUTPUT 1 "pre_gnt_type_be";
+    .port_info 2 /OUTPUT 7 "pre_gnt_bank_be";
+    .port_info 3 /INPUT 8 "pre_all_intent_ref";
+    .port_info 4 /INPUT 8 "pre_all_intent_qos_ref";
+    .port_info 5 /OUTPUT 8 "pre_all_intent_grant_ref";
+    .port_info 6 /INPUT 8 "prepb_req_ref";
+    .port_info 7 /INPUT 8 "prepb_req_qos_ref";
+    .port_info 8 /OUTPUT 8 "prepb_grant_ref";
+    .port_info 9 /INPUT 8 "pre_ab_all_req_intent_pim";
+    .port_info 10 /INPUT 8 "pre_ab_all_req_intent_urgent_qos_pim";
+    .port_info 11 /INPUT 24 "pre_ab_all_req_type_pim";
+    .port_info 12 /OUTPUT 8 "pre_ab_all_ack_grant_pim";
+    .port_info 13 /INPUT 4 "pre_ab_all_req_intent_lp";
+    .port_info 14 /INPUT 4 "pre_ab_all_req_intent_qos_lp";
+    .port_info 15 /OUTPUT 24 "pre_ab_all_grant_lp";
+    .port_info 16 /OUTPUT 4 "pa_pre_all_grant";
+    .port_info 17 /OUTPUT 4 "pa_pre_pb_grant";
+    .port_info 18 /OUTPUT 16 "pre_vld";
+    .port_info 19 /OUTPUT 32 "pre_ph";
+    .port_info 20 /OUTPUT 16 "pre_addr";
+    .port_info 21 /OUTPUT 32 "pre_type";
+    .port_info 22 /INPUT 16 "pre_ab_allow";
+    .port_info 23 /INPUT 32 "pre_ab_allow_ph";
+    .port_info 24 /INPUT 16 "spre_ab_allow";
+    .port_info 25 /INPUT 32 "spre_ab_allow_ph";
+    .port_info 26 /OUTPUT 1 "pa_cmd_vld";
+    .port_info 27 /OUTPUT 5 "pa_dfi_cmd_type";
+    .port_info 28 /OUTPUT 4 "pa_dfi_cmd_rank";
+    .port_info 29 /OUTPUT 2 "pa_dfi_cmd_phase";
+    .port_info 30 /OUTPUT 1 "pa_dfi_cmd_sc";
+    .port_info 31 /INPUT 1 "act_pre_dfi_vld";
+    .port_info 32 /OUTPUT 1 "act_pre_load";
+    .port_info 33 /INPUT 1 "act_pre_type";
+    .port_info 34 /INPUT 32 "act_pre_qos";
+    .port_info 35 /INPUT 1 "rdwr_dfi_vld";
+    .port_info 36 /OUTPUT 1 "rdwr_dfi_load";
+    .port_info 37 /INPUT 1 "rdwr_dfi_type";
+    .port_info 38 /INPUT 32 "rdwr_dfi_hqos";
+    .port_info 39 /OUTPUT 4 "pa_act2_grant";
+    .port_info 40 /INPUT 1 "soft_req";
+    .port_info 41 /INPUT 8 "mrr_req_ref";
+    .port_info 42 /INPUT 8 "mrr_req_qos_ref";
+    .port_info 43 /OUTPUT 8 "mrr_grant_ref";
+    .port_info 44 /INPUT 8 "pim_req";
+    .port_info 45 /INPUT 56 "pim_type";
+    .port_info 46 /INPUT 8 "pim_urgent";
+    .port_info 47 /OUTPUT 8 "pim_grant";
+    .port_info 48 /INPUT 4 "lp_req_rank";
+    .port_info 49 /INPUT 12 "lp_req_typerank";
+    .port_info 50 /INPUT 8 "refdb_req_ref";
+    .port_info 51 /INPUT 8 "refdb_req_qos_ref";
+    .port_info 52 /INPUT 8 "refab_req_ref";
+    .port_info 53 /INPUT 8 "refab_req_qos_ref";
+    .port_info 54 /INPUT 8 "rfmpb_req_ref";
+    .port_info 55 /INPUT 8 "rfmpb_req_qos_ref";
+    .port_info 56 /INPUT 8 "rfmab_req_ref";
+    .port_info 57 /INPUT 8 "rfmab_req_qos_ref";
+    .port_info 58 /OUTPUT 8 "refdb_grant_ref";
+    .port_info 59 /OUTPUT 8 "refab_grant_ref";
+    .port_info 60 /OUTPUT 8 "rfmsb_grant_ref";
+    .port_info 61 /OUTPUT 8 "rfmab_grant_ref";
+    .port_info 62 /INPUT 8 "bp_req_ref";
+    .port_info 63 /INPUT 8 "bp_type_ref";
+    .port_info 64 /INPUT 56 "bp_rnkbgbk_0_ref";
+    .port_info 65 /INPUT 56 "bp_rnkbgbk_1_ref";
+    .port_info 66 /INPUT 4 "backpressure_pim_bp_req_pim";
+    .port_info 67 /INPUT 4 "backpressure_urgent_pim_bp_hqos_pim";
+    .port_info 68 /INPUT 8 "bp_req_lp";
+P_0x7f7cc5808200 .param/l "DDRC_PA_BG_WIDTH" 0 3 10, +C4<00000000000000000000000000000010>;
+P_0x7f7cc5808240 .param/l "DDRC_PA_BK_WIDTH" 0 3 11, +C4<00000000000000000000000000000010>;
+P_0x7f7cc5808280 .param/l "DDRC_PA_BQ_NUM" 0 3 16, +C4<00000000000000000000000000000100>;
+P_0x7f7cc58082c0 .param/l "DDRC_PA_CMD_WIDTH" 0 3 17, +C4<00000000000000000000000000000101>;
+P_0x7f7cc5808300 .param/l "DDRC_PA_DDRC_PA_RKBKBG_WIDTH" 1 3 98, +C4<0000000000000000000000000000000110>;
+P_0x7f7cc5808340 .param/l "DDRC_PA_PHASE_WIDTH" 0 3 18, +C4<00000000000000000000000000000010>;
+P_0x7f7cc5808380 .param/l "DDRC_PA_QOS_WIDTH" 0 3 13, +C4<00000000000000000000000000000100>;
+P_0x7f7cc58083c0 .param/l "DDRC_PA_RDWR_INFO_WIDTH" 1 3 99, +C4<000000000000000000000000000100000>;
+P_0x7f7cc5808400 .param/l "DDRC_PA_RD_INFO_WIDTH" 0 3 14, +C4<00000000000000000000000000010000>;
+P_0x7f7cc5808440 .param/l "DDRC_PA_RK_WIDTH" 0 3 8, +C4<00000000000000000000000000000010>;
+P_0x7f7cc5808480 .param/l "DDRC_PA_ROW_WIDTH" 0 3 9, +C4<00000000000000000000000000010000>;
+P_0x7f7cc58084c0 .param/l "DDRC_PA_SCRKBGBK_WIDTH" 1 3 97, +C4<00000000000000000000000000000000111>;
+P_0x7f7cc5808500 .param/l "DDRC_PA_SC_WIDTH" 0 3 12, +C4<00000000000000000000000000000001>;
+P_0x7f7cc5808540 .param/l "DDRC_PA_WR_INFO_WIDTH" 0 3 15, +C4<00000000000000000000000000010000>;
+P_0x7f7cc5808580 .param/l "DDRC_SCRKBK_WIDTH" 1 3 96, +C4<00000000000000000000000000000000111>;
+P_0x7f7cc58085c0 .param/l "RK_NUM" 1 3 94, +C4<00000000000000000000000000000100>;
+P_0x7f7cc5808600 .param/l "SC_NUM" 1 3 95, +C4<00000000000000000000000000000010>;
+L_0x7f7cb8040998 .functor BUFT 1, C4<0000000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc4728730_0 .net *"_ivl_12", 6 0, L_0x7f7cb8040998;  1 drivers
+L_0x7f7cb80409e0 .functor BUFT 1, C4<0000000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472a870_0 .net *"_ivl_17", 6 0, L_0x7f7cb80409e0;  1 drivers
+L_0x7f7cb8040a28 .functor BUFT 1, C4<0000000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472a900_0 .net *"_ivl_24", 6 0, L_0x7f7cb8040a28;  1 drivers
+L_0x7f7cb8040cb0 .functor BUFT 1, C4<0000000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472a990_0 .net *"_ivl_33", 6 0, L_0x7f7cb8040cb0;  1 drivers
+L_0x7f7cb80405a8 .functor BUFT 1, C4<0000000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472aa30_0 .net *"_ivl_7", 6 0, L_0x7f7cb80405a8;  1 drivers
+o0x7f7cb8008a58 .functor BUFZ 1, C4<z>; HiZ drive
+v0x7f7cc472ab20_0 .net "act_pre_dfi_vld", 0 0, o0x7f7cb8008a58;  0 drivers
+v0x7f7cc472abb0_0 .net "act_pre_load", 0 0, L_0x7f7cc47311f0;  1 drivers
+o0x7f7cb8008ab8 .functor BUFZ 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v0x7f7cc472ac60_0 .net "act_pre_qos", 31 0, o0x7f7cb8008ab8;  0 drivers
+o0x7f7cb8008ae8 .functor BUFZ 1, C4<z>; HiZ drive
+v0x7f7cc472ad30_0 .net "act_pre_type", 0 0, o0x7f7cb8008ae8;  0 drivers
+o0x7f7cb8008008 .functor BUFZ 4, C4<zzzz>; HiZ drive
+v0x7f7cc472ae60_0 .net "backpressure_pim_bp_req_pim", 3 0, o0x7f7cb8008008;  0 drivers
+o0x7f7cb8008038 .functor BUFZ 4, C4<zzzz>; HiZ drive
+v0x7f7cc472aef0_0 .net "backpressure_urgent_pim_bp_hqos_pim", 3 0, o0x7f7cb8008038;  0 drivers
+v0x7f7cc472af80_0 .net "bp_req_fe", 0 0, L_0x7f7cc4730e20;  1 drivers
+o0x7f7cb8008098 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+v0x7f7cc472b010_0 .net "bp_req_lp", 7 0, o0x7f7cb8008098;  0 drivers
+o0x7f7cb80080c8 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+v0x7f7cc472b0c0_0 .net "bp_req_ref", 7 0, o0x7f7cb80080c8;  0 drivers
+v0x7f7cc472b170_0 .net "bp_rnkbgbk_0_pa", 0 0, L_0x7f7cc4730fc0;  1 drivers
+o0x7f7cb8008128 .functor BUFZ 56, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v0x7f7cc472b200_0 .net "bp_rnkbgbk_0_ref", 0 55, o0x7f7cb8008128;  0 drivers
+v0x7f7cc472b2b0_0 .net "bp_rnkbgbk_1_pa", 0 0, L_0x7f7cc4731110;  1 drivers
+o0x7f7cb8008188 .functor BUFZ 56, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v0x7f7cc472b440_0 .net "bp_rnkbgbk_1_ref", 0 55, o0x7f7cb8008188;  0 drivers
+v0x7f7cc472b4f0_0 .net "bp_type_fe", 0 0, L_0x7f7cc4730f20;  1 drivers
+o0x7f7cb80081e8 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+v0x7f7cc472b580_0 .net "bp_type_ref", 7 0, o0x7f7cb80081e8;  0 drivers
+L_0x7f7cb8040e18 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472b610_0 .net "core_clk", 0 0, L_0x7f7cb8040e18;  1 drivers
+L_0x7f7cb8040e60 .functor BUFT 1, C4<1>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472b6a0_0 .net "core_rstn", 0 0, L_0x7f7cb8040e60;  1 drivers
+v0x7f7cc472b770_0 .net "func_load", 0 0, L_0x7f7cc47308f0;  1 drivers
+v0x7f7cc472b800_0 .net "func_req", 0 0, L_0x7f7cc4730b90;  1 drivers
+o0x7f7cb80090b8 .functor BUFZ 4, C4<zzzz>; HiZ drive
+v0x7f7cc472b890_0 .net "lp_req_rank", 3 0, o0x7f7cb80090b8;  0 drivers
+o0x7f7cb80090e8 .functor BUFZ 12, C4<zzzzzzzzzzzz>; HiZ drive
+v0x7f7cc472b920_0 .net "lp_req_typerank", 11 0, o0x7f7cb80090e8;  0 drivers
+L_0x7f7cb8040a70 .functor BUFT 1, C4<00000000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472b9d0_0 .net "mrr_grant_ref", 7 0, L_0x7f7cb8040a70;  1 drivers
+o0x7f7cb8009148 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+v0x7f7cc472ba80_0 .net "mrr_req_qos_ref", 7 0, o0x7f7cb8009148;  0 drivers
+o0x7f7cb8009178 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+v0x7f7cc472bb30_0 .net "mrr_req_ref", 7 0, o0x7f7cb8009178;  0 drivers
+L_0x7f7cb80405f0 .functor BUFT 1, C4<0000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472bbe0_0 .net "pa_act2_grant", 3 0, L_0x7f7cb80405f0;  1 drivers
+L_0x7f7cb80401b8 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472bc90_0 .net "pa_cmd_vld", 0 0, L_0x7f7cb80401b8;  1 drivers
+L_0x7f7cb8040290 .functor BUFT 1, C4<00>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472bd40_0 .net "pa_dfi_cmd_phase", 1 0, L_0x7f7cb8040290;  1 drivers
+L_0x7f7cb8040248 .functor BUFT 1, C4<0000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472bdf0_0 .net "pa_dfi_cmd_rank", 3 0, L_0x7f7cb8040248;  1 drivers
+L_0x7f7cb80402d8 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472b360_0 .net "pa_dfi_cmd_sc", 0 0, L_0x7f7cb80402d8;  1 drivers
+L_0x7f7cb8040200 .functor BUFT 1, C4<00000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472c080_0 .net "pa_dfi_cmd_type", 4 0, L_0x7f7cb8040200;  1 drivers
+L_0x7f7cb8040128 .functor BUFT 1, C4<0000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472c110_0 .net "pa_pre_all_grant", 3 0, L_0x7f7cb8040128;  1 drivers
+L_0x7f7cb8040170 .functor BUFT 1, C4<0000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472c1c0_0 .net "pa_pre_pb_grant", 3 0, L_0x7f7cb8040170;  1 drivers
+L_0x7f7cb8040ab8 .functor BUFT 1, C4<00000000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472c270_0 .net "pim_grant", 7 0, L_0x7f7cb8040ab8;  1 drivers
+o0x7f7cb80091d8 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+v0x7f7cc472c320_0 .net "pim_req", 7 0, o0x7f7cb80091d8;  0 drivers
+o0x7f7cb8009208 .functor BUFZ 56, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v0x7f7cc472c3d0_0 .net "pim_type", 55 0, o0x7f7cb8009208;  0 drivers
+o0x7f7cb8009238 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+v0x7f7cc472c480_0 .net "pim_urgent", 7 0, o0x7f7cb8009238;  0 drivers
+L_0x7f7cb8040098 .functor BUFT 1, C4<00000000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472c530_0 .net "pre_ab_all_ack_grant_pim", 7 0, L_0x7f7cb8040098;  1 drivers
+L_0x7f7cb80400e0 .functor BUFT 1, C4<000000000000000000000000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472c5e0_0 .net "pre_ab_all_grant_lp", 23 0, L_0x7f7cb80400e0;  1 drivers
+o0x7f7cb8009bf8 .functor BUFZ 4, C4<zzzz>; HiZ drive
+v0x7f7cc472c690_0 .net "pre_ab_all_req_intent_lp", 3 0, o0x7f7cb8009bf8;  0 drivers
+o0x7f7cb8009c28 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+v0x7f7cc472c740_0 .net "pre_ab_all_req_intent_pim", 7 0, o0x7f7cb8009c28;  0 drivers
+o0x7f7cb8009c58 .functor BUFZ 4, C4<zzzz>; HiZ drive
+v0x7f7cc472c7f0_0 .net "pre_ab_all_req_intent_qos_lp", 3 0, o0x7f7cb8009c58;  0 drivers
+o0x7f7cb8009c88 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+v0x7f7cc472c8a0_0 .net "pre_ab_all_req_intent_urgent_qos_pim", 7 0, o0x7f7cb8009c88;  0 drivers
+o0x7f7cb8009cb8 .functor BUFZ 24, C4<zzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v0x7f7cc472c950_0 .net "pre_ab_all_req_type_pim", 23 0, o0x7f7cb8009cb8;  0 drivers
+o0x7f7cb8009ce8 .functor BUFZ 16, C4<zzzzzzzzzzzzzzzz>; HiZ drive
+v0x7f7cc472ca00_0 .net "pre_ab_allow", 15 0, o0x7f7cb8009ce8;  0 drivers
+o0x7f7cb8009d18 .functor BUFZ 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v0x7f7cc472cab0_0 .net "pre_ab_allow_ph", 31 0, o0x7f7cb8009d18;  0 drivers
+L_0x7f7cb8040518 .functor BUFT 1, C4<0000000000000000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472cb60_0 .net "pre_addr", 15 0, L_0x7f7cb8040518;  1 drivers
+L_0x7f7cb8040008 .functor BUFT 1, C4<00000000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472cc10_0 .net "pre_all_intent_grant_ref", 7 0, L_0x7f7cb8040008;  1 drivers
+o0x7f7cb8009da8 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+v0x7f7cc472ccc0_0 .net "pre_all_intent_qos_ref", 7 0, o0x7f7cb8009da8;  0 drivers
+o0x7f7cb8009dd8 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+v0x7f7cc472cd70_0 .net "pre_all_intent_ref", 7 0, o0x7f7cb8009dd8;  0 drivers
+L_0x7f7cb8040440 .functor BUFT 1, C4<0000000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472ce20_0 .net "pre_gnt_bank_be", 6 0, L_0x7f7cb8040440;  1 drivers
+L_0x7f7cb80403b0 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472ced0_0 .net "pre_gnt_be", 0 0, L_0x7f7cb80403b0;  1 drivers
+L_0x7f7cb80403f8 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472cf80_0 .net "pre_gnt_type_be", 0 0, L_0x7f7cb80403f8;  1 drivers
+L_0x7f7cb80404d0 .functor BUFT 1, C4<00000000000000000000000000000000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472d030_0 .net "pre_ph", 31 0, L_0x7f7cb80404d0;  1 drivers
+L_0x7f7cb8040560 .functor BUFT 1, C4<00000000000000000000000000000000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472d0e0_0 .net "pre_type", 31 0, L_0x7f7cb8040560;  1 drivers
+L_0x7f7cb8040488 .functor BUFT 1, C4<0000000000000000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472d190_0 .net "pre_vld", 15 0, L_0x7f7cb8040488;  1 drivers
+v0x7f7cc472d240_0 .net "preab_grant_preall", 0 0, L_0x7f7cc4730670;  1 drivers
+v0x7f7cc472d2d0_0 .net "preab_req_preall", 0 0, L_0x7f7cc472ead0;  1 drivers
+v0x7f7cc472d360_0 .net "preab_req_qos_preall", 0 0, L_0x7f7cc472ebb0;  1 drivers
+L_0x7f7cb8040050 .functor BUFT 1, C4<00000000>, C4<0>, C4<0>, C4<0>;
+L_0x7f7cb8040b00 .functor BUFT 1, C4<00000000>, C4<0>, C4<0>, C4<0>;
+RS_0x7f7cb8009268 .resolv tri, L_0x7f7cb8040050, L_0x7f7cb8040b00;
+v0x7f7cc472d3f0_0 .net8 "prepb_grant_ref", 7 0, RS_0x7f7cb8009268;  2 drivers
+o0x7f7cb8009298 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+v0x7f7cc472d4c0_0 .net "prepb_req_qos_ref", 7 0, o0x7f7cb8009298;  0 drivers
+o0x7f7cb80092c8 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+v0x7f7cc472bec0_0 .net "prepb_req_ref", 7 0, o0x7f7cb80092c8;  0 drivers
+o0x7f7cb8008c98 .functor BUFZ 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v0x7f7cc472bf90_0 .net "rdwr_dfi_hqos", 31 0, o0x7f7cb8008c98;  0 drivers
+v0x7f7cc472d550_0 .net "rdwr_dfi_load", 0 0, L_0x7f7cc47312e0;  1 drivers
+o0x7f7cb8008cf8 .functor BUFZ 1, C4<z>; HiZ drive
+v0x7f7cc472d5e0_0 .net "rdwr_dfi_type", 0 0, o0x7f7cb8008cf8;  0 drivers
+o0x7f7cb8008d28 .functor BUFZ 1, C4<z>; HiZ drive
+v0x7f7cc472d670_0 .net "rdwr_dfi_vld", 0 0, o0x7f7cb8008d28;  0 drivers
+L_0x7f7cb8040b90 .functor BUFT 1, C4<00000000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472d700_0 .net "refab_grant_ref", 7 0, L_0x7f7cb8040b90;  1 drivers
+o0x7f7cb8009328 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+v0x7f7cc472d790_0 .net "refab_req_qos_ref", 7 0, o0x7f7cb8009328;  0 drivers
+o0x7f7cb8009358 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+v0x7f7cc472d840_0 .net "refab_req_ref", 7 0, o0x7f7cb8009358;  0 drivers
+L_0x7f7cb8040b48 .functor BUFT 1, C4<00000000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472d8f0_0 .net "refdb_grant_ref", 7 0, L_0x7f7cb8040b48;  1 drivers
+o0x7f7cb80093b8 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+v0x7f7cc472d9a0_0 .net "refdb_req_qos_ref", 7 0, o0x7f7cb80093b8;  0 drivers
+o0x7f7cb80093e8 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+v0x7f7cc472da50_0 .net "refdb_req_ref", 7 0, o0x7f7cb80093e8;  0 drivers
+L_0x7f7cb8040c20 .functor BUFT 1, C4<00000000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472db00_0 .net "rfmab_grant_ref", 7 0, L_0x7f7cb8040c20;  1 drivers
+o0x7f7cb8009448 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+v0x7f7cc472dbb0_0 .net "rfmab_req_qos_ref", 7 0, o0x7f7cb8009448;  0 drivers
+o0x7f7cb8009478 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+v0x7f7cc472dc60_0 .net "rfmab_req_ref", 7 0, o0x7f7cb8009478;  0 drivers
+o0x7f7cb80094a8 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+v0x7f7cc472dd10_0 .net "rfmpb_req_qos_ref", 7 0, o0x7f7cb80094a8;  0 drivers
+o0x7f7cb80094d8 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+v0x7f7cc472ddc0_0 .net "rfmpb_req_ref", 7 0, o0x7f7cb80094d8;  0 drivers
+L_0x7f7cb8040bd8 .functor BUFT 1, C4<00000000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc472de70_0 .net "rfmsb_grant_ref", 7 0, L_0x7f7cb8040bd8;  1 drivers
+o0x7f7cb8008d58 .functor BUFZ 1, C4<z>; HiZ drive
+v0x7f7cc472df20_0 .net "soft_req", 0 0, o0x7f7cb8008d58;  0 drivers
+o0x7f7cb8009fb8 .functor BUFZ 16, C4<zzzzzzzzzzzzzzzz>; HiZ drive
+v0x7f7cc472dff0_0 .net "spre_ab_allow", 15 0, o0x7f7cb8009fb8;  0 drivers
+o0x7f7cb8009fe8 .functor BUFZ 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v0x7f7cc472e080_0 .net "spre_ab_allow_ph", 31 0, o0x7f7cb8009fe8;  0 drivers
+L_0x7f7cb8040320 .functor BUFT 1, C4<00000000>, C4<0>, C4<0>, C4<0>;
+L_0x7f7cc472ead0 .part L_0x7f7cb8040320, 0, 1;
+L_0x7f7cb8040368 .functor BUFT 1, C4<00000000>, C4<0>, C4<0>, C4<0>;
+L_0x7f7cc472ebb0 .part L_0x7f7cb8040368, 0, 1;
+L_0x7f7cc472ec90 .concat [ 1 7 0 0], L_0x7f7cc4730670, L_0x7f7cb80405a8;
+L_0x7f7cc4730430 .concat [ 1 7 0 0], L_0x7f7cc472ead0, L_0x7f7cb8040998;
+L_0x7f7cc4730550 .concat [ 1 7 0 0], L_0x7f7cc472ebb0, L_0x7f7cb80409e0;
+L_0x7f7cc4730670 .part L_0x7f7cc472f320, 0, 1;
+L_0x7f7cc4730790 .concat [ 1 7 0 0], L_0x7f7cc4730b90, L_0x7f7cb8040a28;
+L_0x7f7cc47308f0 .part L_0x7f7cc472e960, 0, 1;
+L_0x7f7cb8040c68 .functor BUFT 1, C4<00000000>, C4<0>, C4<0>, C4<0>;
+L_0x7f7cc4730b90 .part L_0x7f7cb8040c68, 0, 1;
+L_0x7f7cc4730d00 .concat [ 1 7 0 0], L_0x7f7cc47308f0, L_0x7f7cb8040cb0;
+L_0x7f7cb8040cf8 .functor BUFT 1, C4<00000000>, C4<0>, C4<0>, C4<0>;
+L_0x7f7cc4730e20 .part L_0x7f7cb8040cf8, 0, 1;
+L_0x7f7cb8040d40 .functor BUFT 1, C4<00000000>, C4<0>, C4<0>, C4<0>;
+L_0x7f7cc4730f20 .part L_0x7f7cb8040d40, 0, 1;
+L_0x7f7cb8040d88 .functor BUFT 1, C4<00000000000000000000000000000000000000000000000000000000>, C4<0>, C4<0>, C4<0>;
+L_0x7f7cc4730fc0 .part L_0x7f7cb8040d88, 0, 1;
+L_0x7f7cb8040dd0 .functor BUFT 1, C4<00000000000000000000000000000000000000000000000000000000>, C4<0>, C4<0>, C4<0>;
+L_0x7f7cc4731110 .part L_0x7f7cb8040dd0, 0, 1;
+S_0x7f7cc4711da0 .scope module, "bp_if_inst" "bp_if" 3 256, 4 7 0, S_0x7f7cc4711270;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "core_clk";
+    .port_info 1 /INPUT 1 "core_rstn";
+    .port_info 2 /INPUT 8 "bp_req_ref";
+    .port_info 3 /INPUT 8 "bp_type_ref";
+    .port_info 4 /INPUT 56 "bp_rnkbgbk_0_ref";
+    .port_info 5 /INPUT 56 "bp_rnkbgbk_1_ref";
+    .port_info 6 /INPUT 4 "backpressure_pim_bp_req_pim";
+    .port_info 7 /INPUT 4 "backpressure_urgent_pim_bp_hqos_pim";
+    .port_info 8 /INPUT 8 "bp_req_lp";
+    .port_info 9 /OUTPUT 8 "bp_req_fe";
+    .port_info 10 /OUTPUT 8 "bp_type_fe";
+    .port_info 11 /OUTPUT 56 "bp_rnkbgbk_0_pa";
+    .port_info 12 /OUTPUT 56 "bp_rnkbgbk_1_pa";
+P_0x7f7cc5809000 .param/l "DDRC_PA_BG_WIDTH" 0 4 10, +C4<00000000000000000000000000000010>;
+P_0x7f7cc5809040 .param/l "DDRC_PA_BK_WIDTH" 0 4 11, +C4<00000000000000000000000000000010>;
+P_0x7f7cc5809080 .param/l "DDRC_PA_BQ_NUM" 0 4 16, +C4<00000000000000000000000000000100>;
+P_0x7f7cc58090c0 .param/l "DDRC_PA_CMD_WIDTH" 0 4 17, +C4<00000000000000000000000000000101>;
+P_0x7f7cc5809100 .param/l "DDRC_PA_DDRC_PA_RKBKBG_WIDTH" 1 4 42, +C4<0000000000000000000000000000000110>;
+P_0x7f7cc5809140 .param/l "DDRC_PA_PHASE_WIDTH" 0 4 18, +C4<00000000000000000000000000000010>;
+P_0x7f7cc5809180 .param/l "DDRC_PA_QOS_WIDTH" 0 4 13, +C4<00000000000000000000000000000100>;
+P_0x7f7cc58091c0 .param/l "DDRC_PA_RDWR_INFO_WIDTH" 1 4 43, +C4<000000000000000000000000000100000>;
+P_0x7f7cc5809200 .param/l "DDRC_PA_RD_INFO_WIDTH" 0 4 14, +C4<00000000000000000000000000010000>;
+P_0x7f7cc5809240 .param/l "DDRC_PA_RK_WIDTH" 0 4 8, +C4<00000000000000000000000000000010>;
+P_0x7f7cc5809280 .param/l "DDRC_PA_ROW_WIDTH" 0 4 9, +C4<00000000000000000000000000010000>;
+P_0x7f7cc58092c0 .param/l "DDRC_PA_SCRKBGBK_WIDTH" 1 4 41, +C4<00000000000000000000000000000000111>;
+P_0x7f7cc5809300 .param/l "DDRC_PA_SC_WIDTH" 0 4 12, +C4<00000000000000000000000000000001>;
+P_0x7f7cc5809340 .param/l "DDRC_PA_WR_INFO_WIDTH" 0 4 15, +C4<00000000000000000000000000010000>;
+P_0x7f7cc5809380 .param/l "DDRC_SCRKBK_WIDTH" 1 4 40, +C4<00000000000000000000000000000000111>;
+P_0x7f7cc58093c0 .param/l "RK_NUM" 1 4 38, +C4<00000000000000000000000000000100>;
+P_0x7f7cc5809400 .param/l "SC_NUM" 1 4 39, +C4<00000000000000000000000000000010>;
+v0x7f7cc47127c0_0 .net "backpressure_pim_bp_req_pim", 3 0, o0x7f7cb8008008;  alias, 0 drivers
+v0x7f7cc47227d0_0 .net "backpressure_urgent_pim_bp_hqos_pim", 3 0, o0x7f7cb8008038;  alias, 0 drivers
+v0x7f7cc4722870_0 .net "bp_req_fe", 7 0, L_0x7f7cb8040cf8;  1 drivers
+v0x7f7cc4722900_0 .net "bp_req_lp", 7 0, o0x7f7cb8008098;  alias, 0 drivers
+v0x7f7cc4722990_0 .net "bp_req_ref", 7 0, o0x7f7cb80080c8;  alias, 0 drivers
+v0x7f7cc4722a60_0 .net "bp_rnkbgbk_0_pa", 0 55, L_0x7f7cb8040d88;  1 drivers
+v0x7f7cc4722b10_0 .net "bp_rnkbgbk_0_ref", 0 55, o0x7f7cb8008128;  alias, 0 drivers
+v0x7f7cc4722bc0_0 .net "bp_rnkbgbk_1_pa", 0 55, L_0x7f7cb8040dd0;  1 drivers
+v0x7f7cc4722c70_0 .net "bp_rnkbgbk_1_ref", 0 55, o0x7f7cb8008188;  alias, 0 drivers
+v0x7f7cc4722d80_0 .net "bp_type_fe", 7 0, L_0x7f7cb8040d40;  1 drivers
+v0x7f7cc4722e30_0 .net "bp_type_ref", 7 0, o0x7f7cb80081e8;  alias, 0 drivers
+v0x7f7cc4722ee0_0 .net "core_clk", 0 0, L_0x7f7cb8040e18;  alias, 1 drivers
+v0x7f7cc4722f80_0 .net "core_rstn", 0 0, L_0x7f7cb8040e60;  alias, 1 drivers
+S_0x7f7cc4723160 .scope module, "command_arbiter_inst" "command_arbiter" 3 182, 5 7 0, S_0x7f7cc4711270;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "act_pre_dfi_vld";
+    .port_info 1 /OUTPUT 1 "act_pre_load";
+    .port_info 2 /INPUT 1 "act_pre_type";
+    .port_info 3 /INPUT 32 "act_pre_qos";
+    .port_info 4 /INPUT 1 "rdwr_dfi_vld";
+    .port_info 5 /OUTPUT 1 "rdwr_dfi_load";
+    .port_info 6 /INPUT 1 "rdwr_dfi_type";
+    .port_info 7 /INPUT 32 "rdwr_dfi_hqos";
+    .port_info 8 /INPUT 8 "preab_req_preall";
+    .port_info 9 /INPUT 8 "preab_req_qos_preall";
+    .port_info 10 /OUTPUT 8 "preab_grant_preall";
+    .port_info 11 /INPUT 8 "func_req";
+    .port_info 12 /OUTPUT 8 "func_load";
+    .port_info 13 /OUTPUT 4 "pa_act2_grant";
+    .port_info 14 /INPUT 1 "soft_req";
+P_0x7f7cc5809600 .param/l "DDRC_PA_BG_WIDTH" 0 5 10, +C4<00000000000000000000000000000010>;
+P_0x7f7cc5809640 .param/l "DDRC_PA_BK_WIDTH" 0 5 11, +C4<00000000000000000000000000000010>;
+P_0x7f7cc5809680 .param/l "DDRC_PA_BQ_NUM" 0 5 16, +C4<00000000000000000000000000000100>;
+P_0x7f7cc58096c0 .param/l "DDRC_PA_CMD_WIDTH" 0 5 17, +C4<00000000000000000000000000000101>;
+P_0x7f7cc5809700 .param/l "DDRC_PA_DDRC_PA_RKBKBG_WIDTH" 1 5 44, +C4<0000000000000000000000000000000110>;
+P_0x7f7cc5809740 .param/l "DDRC_PA_PHASE_WIDTH" 0 5 18, +C4<00000000000000000000000000000010>;
+P_0x7f7cc5809780 .param/l "DDRC_PA_QOS_WIDTH" 0 5 13, +C4<00000000000000000000000000000100>;
+P_0x7f7cc58097c0 .param/l "DDRC_PA_RDWR_INFO_WIDTH" 1 5 45, +C4<000000000000000000000000000100000>;
+P_0x7f7cc5809800 .param/l "DDRC_PA_RD_INFO_WIDTH" 0 5 14, +C4<00000000000000000000000000010000>;
+P_0x7f7cc5809840 .param/l "DDRC_PA_RK_WIDTH" 0 5 8, +C4<00000000000000000000000000000010>;
+P_0x7f7cc5809880 .param/l "DDRC_PA_ROW_WIDTH" 0 5 9, +C4<00000000000000000000000000010000>;
+P_0x7f7cc58098c0 .param/l "DDRC_PA_SCRKBGBK_WIDTH" 1 5 43, +C4<00000000000000000000000000000000111>;
+P_0x7f7cc5809900 .param/l "DDRC_PA_SC_WIDTH" 0 5 12, +C4<00000000000000000000000000000001>;
+P_0x7f7cc5809940 .param/l "DDRC_PA_WR_INFO_WIDTH" 0 5 15, +C4<00000000000000000000000000010000>;
+P_0x7f7cc5809980 .param/l "DDRC_SCRKBK_WIDTH" 1 5 42, +C4<00000000000000000000000000000000111>;
+P_0x7f7cc58099c0 .param/l "RK_NUM" 1 5 40, +C4<00000000000000000000000000000100>;
+P_0x7f7cc5809a00 .param/l "SC_NUM" 1 5 41, +C4<00000000000000000000000000000010>;
+L_0x7f7cb8040ea8 .functor BUFT 1, C4<00000000>, C4<0>, C4<0>, C4<0>;
+L_0x7f7cc472edb0 .functor OR 8, L_0x7f7cb8040ea8, L_0x7f7cc4730790, C4<00000000>, C4<00000000>;
+L_0x7f7cc472ef40 .functor OR 8, L_0x7f7cc472edb0, L_0x7f7cc472ee20, C4<00000000>, C4<00000000>;
+L_0x7f7cc472f110 .functor OR 8, L_0x7f7cc472ef40, L_0x7f7cc472f030, C4<00000000>, C4<00000000>;
+L_0x7f7cc472f6d0 .functor AND 1, L_0x7f7cc472f5b0, o0x7f7cb8008a58, C4<1>, C4<1>;
+L_0x7f7cc472fa40 .functor OR 8, L_0x7f7cc4730790, L_0x7f7cc472f920, C4<00000000>, C4<00000000>;
+L_0x7f7cc472fd40 .functor AND 1, L_0x7f7cc472fca0, o0x7f7cb8008a58, C4<1>, C4<1>;
+L_0x7f7cb8040950 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+L_0x7f7cc47300d0 .functor OR 1, L_0x7f7cb8040950, L_0x7f7cc472f6d0, C4<0>, C4<0>;
+L_0x7f7cc47311f0 .functor BUFT 1, L_0x7f7cc472ff70, C4<0>, C4<0>, C4<0>;
+L_0x7f7cc47312e0 .functor BUFT 1, o0x7f7cb8008d28, C4<0>, C4<0>, C4<0>;
+L_0x7f7cb8040638 .functor BUFT 1, C4<0000000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc4723bb0_0 .net *"_ivl_11", 6 0, L_0x7f7cb8040638;  1 drivers
+v0x7f7cc4723c40_0 .net *"_ivl_12", 7 0, L_0x7f7cc472ef40;  1 drivers
+v0x7f7cc4723cd0_0 .net *"_ivl_14", 7 0, L_0x7f7cc472f030;  1 drivers
+L_0x7f7cb8040680 .functor BUFT 1, C4<0000000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc4723d60_0 .net *"_ivl_17", 6 0, L_0x7f7cb8040680;  1 drivers
+v0x7f7cc4723df0_0 .net *"_ivl_18", 7 0, L_0x7f7cc472f110;  1 drivers
+v0x7f7cc4723ed0_0 .net *"_ivl_2", 7 0, L_0x7f7cb8040ea8;  1 drivers
+L_0x7f7cb80406c8 .functor BUFT 1, C4<00000000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc4723f80_0 .net/2u *"_ivl_20", 7 0, L_0x7f7cb80406c8;  1 drivers
+v0x7f7cc4724030_0 .net *"_ivl_22", 0 0, L_0x7f7cc472f200;  1 drivers
+L_0x7f7cb8040710 .functor BUFT 1, C4<00000000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc47240d0_0 .net/2u *"_ivl_24", 7 0, L_0x7f7cb8040710;  1 drivers
+v0x7f7cc47241e0_0 .net *"_ivl_30", 1 0, L_0x7f7cc472f440;  1 drivers
+L_0x7f7cb80407a0 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc4724290_0 .net *"_ivl_33", 0 0, L_0x7f7cb80407a0;  1 drivers
+L_0x7f7cb80407e8 .functor BUFT 1, C4<01>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc4724340_0 .net/2u *"_ivl_34", 1 0, L_0x7f7cb80407e8;  1 drivers
+v0x7f7cc47243f0_0 .net *"_ivl_36", 0 0, L_0x7f7cc472f5b0;  1 drivers
+v0x7f7cc4724490_0 .net *"_ivl_43", 0 0, L_0x7f7cc472f800;  1 drivers
+v0x7f7cc4724530_0 .net *"_ivl_44", 7 0, L_0x7f7cc472f920;  1 drivers
+L_0x7f7cb8040830 .functor BUFT 1, C4<0000000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc47245e0_0 .net *"_ivl_47", 6 0, L_0x7f7cb8040830;  1 drivers
+v0x7f7cc4724690_0 .net *"_ivl_48", 7 0, L_0x7f7cc472fa40;  1 drivers
+L_0x7f7cb8040878 .functor BUFT 1, C4<00000000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc4724820_0 .net/2u *"_ivl_50", 7 0, L_0x7f7cb8040878;  1 drivers
+v0x7f7cc47248b0_0 .net *"_ivl_52", 0 0, L_0x7f7cc472fb30;  1 drivers
+L_0x7f7cb80408c0 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc4724950_0 .net/2u *"_ivl_54", 0 0, L_0x7f7cb80408c0;  1 drivers
+v0x7f7cc4724a00_0 .net *"_ivl_57", 0 0, L_0x7f7cc472fca0;  1 drivers
+v0x7f7cc4724aa0_0 .net *"_ivl_58", 0 0, L_0x7f7cc472fd40;  1 drivers
+v0x7f7cc4724b50_0 .net *"_ivl_6", 7 0, L_0x7f7cc472edb0;  1 drivers
+v0x7f7cc4724c00_0 .net *"_ivl_60", 0 0, L_0x7f7cc472fdf0;  1 drivers
+v0x7f7cc4724cb0_0 .net *"_ivl_62", 0 0, L_0x7f7cc472ff70;  1 drivers
+v0x7f7cc4724d60_0 .net *"_ivl_70", 0 0, L_0x7f7cc47300d0;  1 drivers
+L_0x7f7cb8040908 .functor BUFT 1, C4<00000000>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc4724e10_0 .net/2u *"_ivl_72", 7 0, L_0x7f7cb8040908;  1 drivers
+v0x7f7cc4724ec0_0 .net *"_ivl_8", 7 0, L_0x7f7cc472ee20;  1 drivers
+v0x7f7cc4724f70_0 .net "act2_req_vld", 0 0, L_0x7f7cc472f6d0;  1 drivers
+v0x7f7cc4725010_0 .net "act_pre_dfi_vld", 0 0, o0x7f7cb8008a58;  alias, 0 drivers
+v0x7f7cc47250b0_0 .net "act_pre_load", 0 0, L_0x7f7cc47311f0;  alias, 1 drivers
+v0x7f7cc4725150_0 .net "act_pre_qos", 31 0, o0x7f7cb8008ab8;  alias, 0 drivers
+v0x7f7cc4725210_0 .net "act_pre_type", 0 0, o0x7f7cb8008ae8;  alias, 0 drivers
+v0x7f7cc4724730_0 .net "func_load", 7 0, L_0x7f7cc472e960;  1 drivers
+v0x7f7cc47254a0_0 .net "func_req", 7 0, L_0x7f7cc4730790;  1 drivers
+L_0x7f7cb8040758 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0x7f7cc4725530_0 .net "mrr_zq_pre_req", 0 0, L_0x7f7cb8040758;  1 drivers
+v0x7f7cc47255c0_0 .net "pa_act2_grant", 3 0, L_0x7f7cb80405f0;  alias, 1 drivers
+v0x7f7cc4725660_0 .net "preab_grant_preall", 7 0, L_0x7f7cc472f320;  1 drivers
+v0x7f7cc4725710_0 .net "preab_req_preall", 7 0, L_0x7f7cc4730430;  1 drivers
+v0x7f7cc47257c0_0 .net "preab_req_qos_preall", 7 0, L_0x7f7cc4730550;  1 drivers
+v0x7f7cc4725870_0 .net "rd_wr_load", 0 0, L_0x7f7cb8040950;  1 drivers
+v0x7f7cc4725910_0 .net "rdwr_dfi_hqos", 31 0, o0x7f7cb8008c98;  alias, 0 drivers
+v0x7f7cc47259d0_0 .net "rdwr_dfi_load", 0 0, L_0x7f7cc47312e0;  alias, 1 drivers
+v0x7f7cc4725a70_0 .net "rdwr_dfi_type", 0 0, o0x7f7cb8008cf8;  alias, 0 drivers
+v0x7f7cc4725b10_0 .net "rdwr_dfi_vld", 0 0, o0x7f7cb8008d28;  alias, 0 drivers
+v0x7f7cc4725bb0_0 .net "soft_req", 0 0, o0x7f7cb8008d58;  alias, 0 drivers
+L_0x7f7cc472ee20 .concat [ 1 7 0 0], L_0x7f7cc47312e0, L_0x7f7cb8040638;
+L_0x7f7cc472f030 .concat [ 1 7 0 0], L_0x7f7cc472f6d0, L_0x7f7cb8040680;
+L_0x7f7cc472f200 .cmp/ne 8, L_0x7f7cc472f110, L_0x7f7cb80406c8;
+L_0x7f7cc472f320 .functor MUXZ 8, L_0x7f7cc4730430, L_0x7f7cb8040710, L_0x7f7cc472f200, C4<>;
+L_0x7f7cc472f440 .concat [ 1 1 0 0], o0x7f7cb8008ae8, L_0x7f7cb80407a0;
+L_0x7f7cc472f5b0 .cmp/eq 2, L_0x7f7cc472f440, L_0x7f7cb80407e8;
+L_0x7f7cc472f800 .reduce/or L_0x7f7cc4730430;
+L_0x7f7cc472f920 .concat [ 1 7 0 0], L_0x7f7cc472f800, L_0x7f7cb8040830;
+L_0x7f7cc472fb30 .cmp/ne 8, L_0x7f7cc472fa40, L_0x7f7cb8040878;
+L_0x7f7cc472fca0 .reduce/nor L_0x7f7cb8040758;
+L_0x7f7cc472fdf0 .functor MUXZ 1, L_0x7f7cc472fd40, L_0x7f7cb80408c0, L_0x7f7cc472fb30, C4<>;
+L_0x7f7cc472ff70 .functor MUXZ 1, L_0x7f7cc472fdf0, o0x7f7cb8008a58, L_0x7f7cc472f6d0, C4<>;
+L_0x7f7cc472e960 .functor MUXZ 8, L_0x7f7cc4730790, L_0x7f7cb8040908, L_0x7f7cc47300d0, C4<>;
+S_0x7f7cc4725d40 .scope module, "function_arbiter_inst" "function_arbiter" 3 213, 6 7 0, S_0x7f7cc4711270;
+ .timescale 0 0;
+    .port_info 0 /INPUT 8 "mrr_req_ref";
+    .port_info 1 /INPUT 8 "mrr_req_qos_ref";
+    .port_info 2 /OUTPUT 8 "mrr_grant_ref";
+    .port_info 3 /INPUT 8 "pim_req";
+    .port_info 4 /INPUT 56 "pim_type";
+    .port_info 5 /INPUT 8 "pim_urgent";
+    .port_info 6 /OUTPUT 8 "pim_grant";
+    .port_info 7 /INPUT 4 "lp_req_rank";
+    .port_info 8 /INPUT 12 "lp_req_typerank";
+    .port_info 9 /INPUT 8 "prepb_req_ref";
+    .port_info 10 /INPUT 8 "prepb_req_qos_ref";
+    .port_info 11 /OUTPUT 8 "prepb_grant_ref";
+    .port_info 12 /INPUT 8 "refdb_req_ref";
+    .port_info 13 /INPUT 8 "refdb_req_qos_ref";
+    .port_info 14 /INPUT 8 "refab_req_ref";
+    .port_info 15 /INPUT 8 "refab_req_qos_ref";
+    .port_info 16 /INPUT 8 "rfmpb_req_ref";
+    .port_info 17 /INPUT 8 "rfmpb_req_qos_ref";
+    .port_info 18 /INPUT 8 "rfmab_req_ref";
+    .port_info 19 /INPUT 8 "rfmab_req_qos_ref";
+    .port_info 20 /OUTPUT 8 "refdb_grant_ref";
+    .port_info 21 /OUTPUT 8 "refab_grant_ref";
+    .port_info 22 /OUTPUT 8 "rfmsb_grant_ref";
+    .port_info 23 /OUTPUT 8 "rfmab_grant_ref";
+    .port_info 24 /OUTPUT 8 "func_req";
+    .port_info 25 /INPUT 8 "func_load";
+    .port_info 26 /INPUT 1 "soft_req";
+P_0x7f7cc5809c00 .param/l "DDRC_PA_BG_WIDTH" 0 6 10, +C4<00000000000000000000000000000010>;
+P_0x7f7cc5809c40 .param/l "DDRC_PA_BK_WIDTH" 0 6 11, +C4<00000000000000000000000000000010>;
+P_0x7f7cc5809c80 .param/l "DDRC_PA_BQ_NUM" 0 6 16, +C4<00000000000000000000000000000100>;
+P_0x7f7cc5809cc0 .param/l "DDRC_PA_CMD_WIDTH" 0 6 17, +C4<00000000000000000000000000000101>;
+P_0x7f7cc5809d00 .param/l "DDRC_PA_DDRC_PA_RKBKBG_WIDTH" 1 6 56, +C4<0000000000000000000000000000000110>;
+P_0x7f7cc5809d40 .param/l "DDRC_PA_PHASE_WIDTH" 0 6 18, +C4<00000000000000000000000000000010>;
+P_0x7f7cc5809d80 .param/l "DDRC_PA_QOS_WIDTH" 0 6 13, +C4<00000000000000000000000000000100>;
+P_0x7f7cc5809dc0 .param/l "DDRC_PA_RDWR_INFO_WIDTH" 1 6 57, +C4<000000000000000000000000000100000>;
+P_0x7f7cc5809e00 .param/l "DDRC_PA_RD_INFO_WIDTH" 0 6 14, +C4<00000000000000000000000000010000>;
+P_0x7f7cc5809e40 .param/l "DDRC_PA_RK_WIDTH" 0 6 8, +C4<00000000000000000000000000000010>;
+P_0x7f7cc5809e80 .param/l "DDRC_PA_ROW_WIDTH" 0 6 9, +C4<00000000000000000000000000010000>;
+P_0x7f7cc5809ec0 .param/l "DDRC_PA_SCRKBGBK_WIDTH" 1 6 55, +C4<00000000000000000000000000000000111>;
+P_0x7f7cc5809f00 .param/l "DDRC_PA_SC_WIDTH" 0 6 12, +C4<00000000000000000000000000000001>;
+P_0x7f7cc5809f40 .param/l "DDRC_PA_WR_INFO_WIDTH" 0 6 15, +C4<00000000000000000000000000010000>;
+P_0x7f7cc5809f80 .param/l "DDRC_SCRKBK_WIDTH" 1 6 54, +C4<00000000000000000000000000000000111>;
+P_0x7f7cc5809fc0 .param/l "RK_NUM" 1 6 52, +C4<00000000000000000000000000000100>;
+P_0x7f7cc580a000 .param/l "SC_NUM" 1 6 53, +C4<00000000000000000000000000000010>;
+v0x7f7cc47269b0_0 .net "func_load", 7 0, L_0x7f7cc4730d00;  1 drivers
+v0x7f7cc4726a40_0 .net "func_req", 7 0, L_0x7f7cb8040c68;  1 drivers
+v0x7f7cc4726ad0_0 .net "lp_req_rank", 3 0, o0x7f7cb80090b8;  alias, 0 drivers
+v0x7f7cc4726b60_0 .net "lp_req_typerank", 11 0, o0x7f7cb80090e8;  alias, 0 drivers
+v0x7f7cc4726bf0_0 .net "mrr_grant_ref", 7 0, L_0x7f7cb8040a70;  alias, 1 drivers
+v0x7f7cc4726c80_0 .net "mrr_req_qos_ref", 7 0, o0x7f7cb8009148;  alias, 0 drivers
+v0x7f7cc4726d20_0 .net "mrr_req_ref", 7 0, o0x7f7cb8009178;  alias, 0 drivers
+v0x7f7cc4726dd0_0 .net "pim_grant", 7 0, L_0x7f7cb8040ab8;  alias, 1 drivers
+v0x7f7cc4726e80_0 .net "pim_req", 7 0, o0x7f7cb80091d8;  alias, 0 drivers
+v0x7f7cc4726f90_0 .net "pim_type", 55 0, o0x7f7cb8009208;  alias, 0 drivers
+v0x7f7cc4727040_0 .net "pim_urgent", 7 0, o0x7f7cb8009238;  alias, 0 drivers
+v0x7f7cc47270f0_0 .net8 "prepb_grant_ref", 7 0, RS_0x7f7cb8009268;  alias, 2 drivers
+v0x7f7cc47271a0_0 .net "prepb_req_qos_ref", 7 0, o0x7f7cb8009298;  alias, 0 drivers
+v0x7f7cc4727250_0 .net "prepb_req_ref", 7 0, o0x7f7cb80092c8;  alias, 0 drivers
+v0x7f7cc4727300_0 .net "refab_grant_ref", 7 0, L_0x7f7cb8040b90;  alias, 1 drivers
+v0x7f7cc47273b0_0 .net "refab_req_qos_ref", 7 0, o0x7f7cb8009328;  alias, 0 drivers
+v0x7f7cc4727460_0 .net "refab_req_ref", 7 0, o0x7f7cb8009358;  alias, 0 drivers
+v0x7f7cc47275f0_0 .net "refdb_grant_ref", 7 0, L_0x7f7cb8040b48;  alias, 1 drivers
+v0x7f7cc4727680_0 .net "refdb_req_qos_ref", 7 0, o0x7f7cb80093b8;  alias, 0 drivers
+v0x7f7cc4727730_0 .net "refdb_req_ref", 7 0, o0x7f7cb80093e8;  alias, 0 drivers
+v0x7f7cc47277e0_0 .net "rfmab_grant_ref", 7 0, L_0x7f7cb8040c20;  alias, 1 drivers
+v0x7f7cc4727890_0 .net "rfmab_req_qos_ref", 7 0, o0x7f7cb8009448;  alias, 0 drivers
+v0x7f7cc4727940_0 .net "rfmab_req_ref", 7 0, o0x7f7cb8009478;  alias, 0 drivers
+v0x7f7cc47279f0_0 .net "rfmpb_req_qos_ref", 7 0, o0x7f7cb80094a8;  alias, 0 drivers
+v0x7f7cc4727aa0_0 .net "rfmpb_req_ref", 7 0, o0x7f7cb80094d8;  alias, 0 drivers
+v0x7f7cc4727b50_0 .net "rfmsb_grant_ref", 7 0, L_0x7f7cb8040bd8;  alias, 1 drivers
+v0x7f7cc4727c00_0 .net "soft_req", 0 0, o0x7f7cb8008d58;  alias, 0 drivers
+S_0x7f7cc4727eb0 .scope module, "pre_all_inst" "pre_all" 3 130, 7 7 0, S_0x7f7cc4711270;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "core_clk";
+    .port_info 1 /INPUT 1 "core_rstn";
+    .port_info 2 /OUTPUT 1 "pre_gnt_be";
+    .port_info 3 /OUTPUT 1 "pre_gnt_type_be";
+    .port_info 4 /OUTPUT 7 "pre_gnt_bank_be";
+    .port_info 5 /INPUT 8 "pre_all_intent_ref";
+    .port_info 6 /INPUT 8 "pre_all_intent_qos_ref";
+    .port_info 7 /OUTPUT 8 "pre_all_intent_grant_ref";
+    .port_info 8 /INPUT 8 "prepb_req_ref";
+    .port_info 9 /INPUT 8 "prepb_req_qos_ref";
+    .port_info 10 /OUTPUT 8 "prepb_grant_ref";
+    .port_info 11 /INPUT 8 "pre_ab_all_req_intent_pim";
+    .port_info 12 /INPUT 8 "pre_ab_all_req_intent_urgent_qos_pim";
+    .port_info 13 /INPUT 24 "pre_ab_all_req_type_pim";
+    .port_info 14 /OUTPUT 8 "pre_ab_all_ack_grant_pim";
+    .port_info 15 /INPUT 4 "pre_ab_all_req_intent_lp";
+    .port_info 16 /INPUT 4 "pre_ab_all_req_intent_qos_lp";
+    .port_info 17 /OUTPUT 24 "pre_ab_all_grant_lp";
+    .port_info 18 /OUTPUT 4 "pa_pre_all_grant";
+    .port_info 19 /OUTPUT 4 "pa_pre_pb_grant";
+    .port_info 20 /OUTPUT 16 "pre_vld";
+    .port_info 21 /OUTPUT 32 "pre_ph";
+    .port_info 22 /OUTPUT 16 "pre_addr";
+    .port_info 23 /OUTPUT 32 "pre_type";
+    .port_info 24 /INPUT 16 "pre_ab_allow";
+    .port_info 25 /INPUT 32 "pre_ab_allow_ph";
+    .port_info 26 /INPUT 16 "spre_ab_allow";
+    .port_info 27 /INPUT 32 "spre_ab_allow_ph";
+    .port_info 28 /OUTPUT 1 "pa_cmd_vld";
+    .port_info 29 /OUTPUT 5 "pa_dfi_cmd_type";
+    .port_info 30 /OUTPUT 4 "pa_dfi_cmd_rank";
+    .port_info 31 /OUTPUT 2 "pa_dfi_cmd_phase";
+    .port_info 32 /OUTPUT 1 "pa_dfi_cmd_sc";
+    .port_info 33 /OUTPUT 8 "preab_req_preall";
+    .port_info 34 /OUTPUT 8 "preab_req_qos_preall";
+    .port_info 35 /INPUT 8 "preab_grant_preall";
+P_0x7f7cc580a200 .param/l "DDRC_PA_BG_WIDTH" 0 7 10, +C4<00000000000000000000000000000010>;
+P_0x7f7cc580a240 .param/l "DDRC_PA_BK_WIDTH" 0 7 11, +C4<00000000000000000000000000000010>;
+P_0x7f7cc580a280 .param/l "DDRC_PA_BQ_NUM" 0 7 16, +C4<00000000000000000000000000000100>;
+P_0x7f7cc580a2c0 .param/l "DDRC_PA_CMD_WIDTH" 0 7 17, +C4<00000000000000000000000000000101>;
+P_0x7f7cc580a300 .param/l "DDRC_PA_DDRC_PA_RKBKBG_WIDTH" 1 7 65, +C4<0000000000000000000000000000000110>;
+P_0x7f7cc580a340 .param/l "DDRC_PA_PHASE_WIDTH" 0 7 18, +C4<00000000000000000000000000000010>;
+P_0x7f7cc580a380 .param/l "DDRC_PA_QOS_WIDTH" 0 7 13, +C4<00000000000000000000000000000100>;
+P_0x7f7cc580a3c0 .param/l "DDRC_PA_RDWR_INFO_WIDTH" 1 7 66, +C4<000000000000000000000000000100000>;
+P_0x7f7cc580a400 .param/l "DDRC_PA_RD_INFO_WIDTH" 0 7 14, +C4<00000000000000000000000000010000>;
+P_0x7f7cc580a440 .param/l "DDRC_PA_RK_WIDTH" 0 7 8, +C4<00000000000000000000000000000010>;
+P_0x7f7cc580a480 .param/l "DDRC_PA_ROW_WIDTH" 0 7 9, +C4<00000000000000000000000000010000>;
+P_0x7f7cc580a4c0 .param/l "DDRC_PA_SCRKBGBK_WIDTH" 1 7 64, +C4<00000000000000000000000000000000111>;
+P_0x7f7cc580a500 .param/l "DDRC_PA_SC_WIDTH" 0 7 12, +C4<00000000000000000000000000000001>;
+P_0x7f7cc580a540 .param/l "DDRC_PA_WR_INFO_WIDTH" 0 7 15, +C4<00000000000000000000000000010000>;
+P_0x7f7cc580a580 .param/l "DDRC_SCRKBK_WIDTH" 1 7 63, +C4<00000000000000000000000000000000111>;
+P_0x7f7cc580a5c0 .param/l "RK_NUM" 1 7 61, +C4<00000000000000000000000000000100>;
+P_0x7f7cc580a600 .param/l "SC_NUM" 1 7 62, +C4<00000000000000000000000000000010>;
+v0x7f7cc4728bb0_0 .net "core_clk", 0 0, L_0x7f7cb8040e18;  alias, 1 drivers
+v0x7f7cc4728c40_0 .net "core_rstn", 0 0, L_0x7f7cb8040e60;  alias, 1 drivers
+v0x7f7cc4728cd0_0 .net "pa_cmd_vld", 0 0, L_0x7f7cb80401b8;  alias, 1 drivers
+v0x7f7cc4728d60_0 .net "pa_dfi_cmd_phase", 1 0, L_0x7f7cb8040290;  alias, 1 drivers
+v0x7f7cc4728df0_0 .net "pa_dfi_cmd_rank", 3 0, L_0x7f7cb8040248;  alias, 1 drivers
+v0x7f7cc4728e80_0 .net "pa_dfi_cmd_sc", 0 0, L_0x7f7cb80402d8;  alias, 1 drivers
+v0x7f7cc4728f10_0 .net "pa_dfi_cmd_type", 4 0, L_0x7f7cb8040200;  alias, 1 drivers
+v0x7f7cc4728fa0_0 .net "pa_pre_all_grant", 3 0, L_0x7f7cb8040128;  alias, 1 drivers
+v0x7f7cc4729050_0 .net "pa_pre_pb_grant", 3 0, L_0x7f7cb8040170;  alias, 1 drivers
+v0x7f7cc4729160_0 .net "pre_ab_all_ack_grant_pim", 7 0, L_0x7f7cb8040098;  alias, 1 drivers
+v0x7f7cc4729210_0 .net "pre_ab_all_grant_lp", 23 0, L_0x7f7cb80400e0;  alias, 1 drivers
+v0x7f7cc47292c0_0 .net "pre_ab_all_req_intent_lp", 3 0, o0x7f7cb8009bf8;  alias, 0 drivers
+v0x7f7cc4729370_0 .net "pre_ab_all_req_intent_pim", 7 0, o0x7f7cb8009c28;  alias, 0 drivers
+v0x7f7cc4729420_0 .net "pre_ab_all_req_intent_qos_lp", 3 0, o0x7f7cb8009c58;  alias, 0 drivers
+v0x7f7cc47294d0_0 .net "pre_ab_all_req_intent_urgent_qos_pim", 7 0, o0x7f7cb8009c88;  alias, 0 drivers
+v0x7f7cc4729580_0 .net "pre_ab_all_req_type_pim", 23 0, o0x7f7cb8009cb8;  alias, 0 drivers
+v0x7f7cc4729630_0 .net "pre_ab_allow", 15 0, o0x7f7cb8009ce8;  alias, 0 drivers
+v0x7f7cc47297c0_0 .net "pre_ab_allow_ph", 31 0, o0x7f7cb8009d18;  alias, 0 drivers
+v0x7f7cc4729850_0 .net "pre_addr", 15 0, L_0x7f7cb8040518;  alias, 1 drivers
+v0x7f7cc4729900_0 .net "pre_all_intent_grant_ref", 7 0, L_0x7f7cb8040008;  alias, 1 drivers
+v0x7f7cc47299b0_0 .net "pre_all_intent_qos_ref", 7 0, o0x7f7cb8009da8;  alias, 0 drivers
+v0x7f7cc4729a60_0 .net "pre_all_intent_ref", 7 0, o0x7f7cb8009dd8;  alias, 0 drivers
+v0x7f7cc4729b10_0 .net "pre_gnt_bank_be", 6 0, L_0x7f7cb8040440;  alias, 1 drivers
+v0x7f7cc4729bc0_0 .net "pre_gnt_be", 0 0, L_0x7f7cb80403b0;  alias, 1 drivers
+v0x7f7cc4729c60_0 .net "pre_gnt_type_be", 0 0, L_0x7f7cb80403f8;  alias, 1 drivers
+v0x7f7cc4729d00_0 .net "pre_ph", 31 0, L_0x7f7cb80404d0;  alias, 1 drivers
+v0x7f7cc4729db0_0 .net "pre_type", 31 0, L_0x7f7cb8040560;  alias, 1 drivers
+v0x7f7cc4729e60_0 .net "pre_vld", 15 0, L_0x7f7cb8040488;  alias, 1 drivers
+v0x7f7cc4729f10_0 .net "preab_grant_preall", 7 0, L_0x7f7cc472ec90;  1 drivers
+v0x7f7cc4729fc0_0 .net "preab_req_preall", 7 0, L_0x7f7cb8040320;  1 drivers
+v0x7f7cc472a070_0 .net "preab_req_qos_preall", 7 0, L_0x7f7cb8040368;  1 drivers
+v0x7f7cc472a120_0 .net8 "prepb_grant_ref", 7 0, RS_0x7f7cb8009268;  alias, 2 drivers
+v0x7f7cc472a1e0_0 .net "prepb_req_qos_ref", 7 0, o0x7f7cb8009298;  alias, 0 drivers
+v0x7f7cc47296c0_0 .net "prepb_req_ref", 7 0, o0x7f7cb80092c8;  alias, 0 drivers
+v0x7f7cc472a470_0 .net "spre_ab_allow", 15 0, o0x7f7cb8009fb8;  alias, 0 drivers
+v0x7f7cc472a500_0 .net "spre_ab_allow_ph", 31 0, o0x7f7cb8009fe8;  alias, 0 drivers
+# The file index is used to find the file name in the following table.
+:file_names 8;
+    "N/A";
+    "<interactive>";
+    "-";
+    "protocol_arbiter.v";
+    "bp_if.v";
+    "command_arbiter.v";
+    "function_arbiter.v";
+    "pre_all.v";
