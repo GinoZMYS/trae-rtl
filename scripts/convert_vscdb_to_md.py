@@ -5,6 +5,7 @@ import sqlite3
 import json
 from datetime import datetime
 from pathlib import Path
+import re
 
 def load_rows(db_path):
     conn = sqlite3.connect(db_path)
@@ -14,6 +15,10 @@ def load_rows(db_path):
             "memento/icube-ai-ng-chat-storage%",
             "memento/icube-ai-chat-storage%",
             "memento/%chat%",
+            "chat.%",
+            "ChatStore",
+            "icube-ai-agent-storage-input-history%",
+            "currentAgentData_%"
         ]
         rows = []
         for p in patterns:
@@ -25,6 +30,11 @@ def load_rows(db_path):
 
 def try_json_loads(s):
     try:
+        if isinstance(s, bytes):
+            try:
+                s = s.decode('utf-8', errors='ignore')
+            except Exception:
+                s = str(s)
         obj = json.loads(s)
         if isinstance(obj, str):
             try:
@@ -50,9 +60,17 @@ def extract_messages(value_obj):
             v = value_obj.get(k)
             if isinstance(v, list):
                 return v
+        # icube-ai input history structure
+        if "history" in value_obj and isinstance(value_obj["history"], list):
+            return value_obj["history"]
         return []
     if isinstance(value_obj, list):
         return value_obj
+    # Fallback: try to pull inputText via regex from raw string
+    if isinstance(value_obj, str):
+        hits = re.findall(r'"inputText"\s*:\s*"([\s\S]*?)"', value_obj)
+        if hits:
+            return [{"inputText": h} for h in hits]
     return []
 
 def role_name(r):
@@ -75,6 +93,19 @@ def format_block(text):
         return "```\n" + t + "\n```"
     return t
 
+def sanitize(text):
+    if text is None:
+        return ""
+    t = str(text)
+    # Redact GitHub tokens and bearer strings
+    t = re.sub(r"ghp_[A-Za-z0-9]{20,}", "[REDACTED_TOKEN]", t)
+    t = re.sub(r"Bearer\s+[A-Za-z0-9._-]+", "Bearer [REDACTED]", t)
+    # Redact SSH keys
+    t = re.sub(r"-----BEGIN[\s\S]*?PRIVATE KEY-----", "[REDACTED_PRIVATE_KEY]", t)
+    # Redact email addresses
+    t = re.sub(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+", "[REDACTED_EMAIL]", t)
+    return t
+
 def convert(db_path, output_md):
     rows = load_rows(db_path)
     # 组装消息列表并按日期分组
@@ -89,13 +120,13 @@ def convert(db_path, output_md):
                 # 提取日期与时间
                 date_part = ts_iso[:10] if len(ts_iso) >= 10 else "未知日期"
                 time_part = ts_iso[11:16] if len(ts_iso) >= 16 else "--:--"
-                role = role_name(m.get("role") or m.get("sender") or m.get("author"))
-                content = m.get("content") or m.get("text") or m.get("message") or ""
+                role = role_name(m.get("role") or m.get("sender") or m.get("author") or ("用户" if "inputText" in m else None))
+                content = m.get("content") or m.get("text") or m.get("message") or m.get("inputText") or ""
                 sessions.append({
                     "date": date_part,
                     "time": time_part,
                     "role": role,
-                    "content": str(content),
+                    "content": sanitize(content),
                     "key": key
                 })
     # 按日期排序
